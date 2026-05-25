@@ -1,83 +1,261 @@
-# Eventora - Full-Stack Event Booking Platform
+# Eventora
 
-Eventora is a full-stack MERN application that allows users to seamlessly browse, register, and pay natively without any third party tools. It features an administrative dashboard for event organizers to create and manage free and paid events. All bookings can be managed manually by an admin to handle payments directly.
-
-## Features
-- **User Authentication**: Secure login & registration with JWT and bcrypt.
-- **2FA OTP Verification**: 
-  - Mandatory Email OTP to activate your account upon Registration (or delayed login attempts).
-  - Mandatory Email OTP to finalize and secure event ticket booking.
-- **Role-Based Access**: 
-  - **Admin**: Create, edit, and delete events. Confirm and reject all incoming booking requests, mark them as 'Paid' or 'Not Paid'. Access is strictly locked to database-flagged users only.
-  - **User**: Browse events, submit ticket booking requests via OTP, view personal dashboard pending status, and cancel bookings.
-- **Event Management**: Create free and paid events with detailed descriptions, external image URLs, dates, categories, and seating capacity.
-- **Smart Booking System**:
-  - Mandatory 2FA OTP to authorize a booking request.
-  - All booking requests (both free and paid) enter a secure 'Pending' queue for Admin verification.
-  - Seat availability accurately updates and securely validates against overbooking logic.
-- **Admin Analytics Dashboard**: Track live data such as Pending Requests, Total Revenue, and Total Confirmed Paid Clients directly from the admin panel.
-- **Email Notifications**: Automated email delivery upon successful booking confirmation using Nodemailer.
-- **Sleek UI/UX**: Built entirely with React, Tailwind CSS, and polished with micro-interactions.
+🔗 Live Demo:[https://eventora-mern-ivbf.onrender.com]
 
 ---
 
-## 🚀 Setup Instructions
+# Eventora - Full Stack Event Booking Platform
 
-### Prerequisites
-Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
-You will also need a MongoDB database (e.g., [MongoDB Atlas Free Tier](https://www.mongodb.com/cloud/atlas/register)).
+Eventora is a full-stack MERN application that allows users to browse, register, and book events securely using OTP verification and role-based authentication.
 
-### 1. Environment Variables Configuration
-Navigate to `server/.env` and fill in the necessary keys:
+The platform supports both free and paid events with admin approval workflows, secure booking management, analytics dashboard, and email notifications.
+
+---
+
+# Features
+
+## Authentication & Security
+
+- JWT Authentication
+- Password Hashing using bcrypt
+- OTP-based Email Verification
+- Secure Login System
+- Role-Based Authorization
+
+---
+
+## User Features
+
+- User Registration & Login
+- Email OTP Verification
+- Browse Events
+- Book Event Tickets
+- View Booking Status
+- Cancel Bookings
+- Free & Paid Event Support
+
+---
+
+## Admin Features
+
+- Create Events
+- Edit Events
+- Delete Events
+- Approve/Reject Bookings
+- Mark Payments as Paid/Unpaid
+- Dashboard Analytics
+- Revenue & Pending Request Tracking
+
+---
+
+## Booking System
+
+- OTP-secured Booking Flow
+- Pending Verification Queue
+- Seat Availability Management
+- Overbooking Prevention Logic
+
+---
+
+## Email System
+
+- OTP Emails
+- Booking Confirmation Emails
+- Notification Emails
+- Nodemailer Integration
+
+---
+
+## UI/UX
+
+- React + Tailwind CSS
+- Responsive Design
+- Modern UI
+- Mobile Friendly
+- Smooth Micro Interactions
+
+---
+
+# Tech Stack
+
+## Frontend
+
+- React.js
+- Vite
+- Tailwind CSS
+- Axios
+- React Router DOM
+
+---
+
+## Backend
+
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose
+- JWT
+- bcryptjs
+- Nodemailer
+
+---
+
+# Project Structure
+
+```bash
+Eventora-MERN/
+│
+├── client/
+│   ├── src/
+│   ├── public/
+│   └── dist/
+│
+├── server/
+│   ├── controllers/
+│   ├── routes/
+│   ├── models/
+│   ├── middleware/
+│   ├── utils/
+│   └── server.js
+│
+├── package.json
+└── README.md
+```
+
+---
+
+# Installation & Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/kaveri514/Eventora-MERN.git
+```
+
+```bash
+cd Eventora-MERN
+```
+
+---
+
+# Install Dependencies
+
+```bash
+npm install
+```
+
+```bash
+npm run install:all
+```
+
+---
+
+# Environment Variables
+
+Create:
+
+```bash
+server/.env
+```
+
+Add:
+
 ```env
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=supersecretjwtkey_eventora
-EMAIL_USER=your_gmail_address
-EMAIL_PASS=your_gmail_app_password
+MONGO_URI=your_mongodb_atlas_url
+
+JWT_SECRET=your_secret_key
+
+EMAIL_USER=your_gmail@gmail.com
+
+EMAIL_PASS=your_google_app_password
+
 PORT=5000
 ```
-> **Note**: For `EMAIL_PASS`, you need to generate an "App Password" from your Google Account settings, standard passwords won't work due to 2FA.
 
-### 2. Run from Outer Folder (Single Terminal)
-You can now manage both backend and frontend from the project root:
+---
+
+# Run Locally
+
+## Development Mode
 
 ```bash
-# from Eventora root
-npm install
-npm run install:all
 npm run dev
 ```
 
-- `npm run dev` starts both `server` and `client` together using `concurrently`.
-- `npm run dev:all` installs dependencies (server + client) and starts both in one command.
-- `npm run start` runs backend `start` + frontend `preview` together.
+---
 
-### 3. Install Dependencies
-Open two separate terminals for the backend and frontend.
+# Production Build
 
-**Backend Terminal:**
 ```bash
-cd server
-npm install --legacy-peer-deps
+npm run build
 ```
 
-**Frontend Terminal:**
+---
+
+# Start Production Server
+
 ```bash
-cd client
-npm install
+npm start
 ```
 
-### 4. Run the Application Local Servers
-**Run Backend:**
-```bash
-cd server
-npm run dev
-```
-*(Server will run on `http://localhost:5000`)*
+---
 
-**Run Frontend:**
+# Deployment
+
+## Frontend + Backend Hosted On
+
+- Render
+
+## Database Hosted On
+
+- MongoDB Atlas
+
+---
+
+# Deployment Commands
+
+## Build Command
+
 ```bash
-cd client
-npm run dev
+npm install && npm run install:all && npm run build
 ```
-*(Client will run on a local port provided by Vite, typically `http://localhost:5173`)*
+
+---
+
+## Start Command
+
+```bash
+npm start
+```
+
+---
+
+# API Base URL
+
+```bash
+https://eventora-mern-ivbf.onrender.com/api
+```
+
+---
+
+# Future Improvements
+
+- Razorpay/Stripe Integration
+- QR Ticket Generation
+- Real-time Notifications
+- Advanced Event Filters
+- Google Authentication
+- Dark Mode
+
+---
+
+
+
+GitHub:
+https://github.com/kaveri514
+
+---
+
+# License
+
+This project is built for learning and portfolio purposes.
